@@ -1,5 +1,9 @@
 # CrudApp
 
+Alunos:
+Enzo Lopes Cambraia Baptista, RA: 223335
+Lucas Siqueira, RA: 212138
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.12.
 
 ## Development server
