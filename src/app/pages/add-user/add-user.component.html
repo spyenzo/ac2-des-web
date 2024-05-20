@@ -1,43 +1,82 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card shadow">
-        <div class="card-header bg-primary text-white">
-          <h2 class="mb-0">Adicionar Usuário</h2>
-        </div>
-        <div class="card-body">
-          <form (ngSubmit)="onSubmit()" #form="ngForm">
-            <div class="mb-3">
-              <label for="name" class="form-label">Nome:</label>
-              <input type="text" id="name" name="name" [(ngModel)]="user.name" required class="form-control">
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 vh-100">
+    <div class="row d-flex justify-content-center align-items-center vh-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+            <div class="mb-md-5 mt-md-4 pb-5">
+              <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+              <p class="text-white-50 mb-5">Por favor insira seu login com senha</p>
+
+              <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <div class="form-outline form-white mb-4">
+                  <!-- Email Error -->
+                  <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">
+                    <div class="text-danger">Email é obrigatório</div>
+                  </div>
+
+                  <!-- Invalid User Error -->
+                  <div *ngIf="invalidUser">
+                    <div class="text-danger">E-mail / senha inválidos</div>
+                  </div>
+
+                  <input
+                    type="email"
+                    id="typeEmailX"
+                    class="form-control form-control-lg"
+                    formControlName="email"
+                    autocomplete="off"
+                  />
+                  <label class="form-label" for="typeEmailX">Email</label>
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                  <!-- Password Error -->
+                  <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+                    <div class="text-danger">Senha é um campo obrigatório</div>
+                  </div>
+
+                  <input
+                    type="password"
+                    id="typePasswordX"
+                    class="form-control form-control-lg"
+                    formControlName="password"
+                    autocomplete="new-password"
+                  />
+                  <label class="form-label" for="typePasswordX">Senha</label>
+                </div>
+
+                <button
+                  class="btn btn-outline-light btn-lg px-5"
+                  type="submit"
+                  [disabled]="!loginForm.valid"
+                >
+                  Login
+                </button>
+
+                <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                  <a href="#!" class="text-white">
+                    <i class="fab fa-facebook-f fa-lg"></i>
+                  </a>
+                  <a href="#!" class="text-white">
+                    <i class="fab fa-twitter fa-lg mx-4 px-2"></i>
+                  </a>
+                  <a href="#!" class="text-white">
+                    <i class="fab fa-google fa-lg"></i>
+                  </a>
+                </div>
+              </form>
             </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email:</label>
-              <input type="email" id="email" name="email" [(ngModel)]="user.email" required class="form-control">
+
+            <div>
+              <p class="mb-0">
+                Não tem uma conta?
+                <a class="text-white-50 fw-bold" routerLink="/signup">Inscrever-se</a>
+              </p>
             </div>
-            <div class="mb-3">
-              <label for="role" class="form-label">Cargo:</label>
-              <select id="role" name="role" [(ngModel)]="user.role" required class="form-select">
-                <option value="Engenheiro de FE">Engenheiro de FE</option>
-                <option value="Engenheiro de BE">Engenheiro de BE</option>
-                <option value="Analista de dados">Analista de dados</option>
-                <option value="Líder Técnico">Líder Técnico</option>
-              </select>
-            </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Senha:</label>
-              <input type="password" id="password" name="password" [(ngModel)]="user.password" required minlength="6" maxlength="15" class="form-control" autocomplete="new-password">
-              <div *ngIf="form.controls['password']?.invalid && (form.controls['password']?.dirty || form.controls['password']?.touched)" class="text-danger">
-                <div *ngIf="form.controls['password']?.errors?.['required']">A senha é obrigatória.</div>
-                <div *ngIf="form.controls['password']?.errors?.['minlength']">A senha deve ter pelo menos 6 caracteres.</div>
-              </div>
-            </div>
-            <div class="d-grid">
-              <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Salvar</button>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>
