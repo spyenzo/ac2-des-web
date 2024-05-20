@@ -5,9 +5,27 @@ import { Injectable } from '@angular/core';
 })
 export class UserService {
   private users = [
-    { id: 1, name: 'John Doe', email: 'john@example.com', role: 'Engenheiro de FE', password: '123456' },
-    { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'Engenheiro de BE', password: 'abcdef' },
-    { id: 3, name: 'Bob Johnson', email: 'bob@example.com', role: 'Analista de dados', password: 'qwerty' }
+    {
+      id: 1,
+      name: 'John Doe',
+      email: 'john@example.com',
+      role: 'Engenheiro de FE',
+      password: '123456'
+    },
+    {
+      id: 2,
+      name: 'Jane Smith',
+      email: 'jane@example.com',
+      role: 'Engenheiro de BE',
+      password: 'abcdef'
+    },
+    {
+      id: 3,
+      name: 'Bob Johnson',
+      email: 'bob@example.com',
+      role: 'Analista de dados',
+      password: 'qwerty'
+    }
   ];
 
   getUsers() {
